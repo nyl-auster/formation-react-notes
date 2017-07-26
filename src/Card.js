@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Card = ({ id, title, text, picture, footer }) =>
   <div className="card" style={{ width: '20rem' }}>
@@ -9,6 +10,7 @@ const Card = ({ id, title, text, picture, footer }) =>
       <p className="card-text">
         {text}
       </p>
+      <Link to={'/character/' + id}>Voir la fiche</Link>
     </div>
     <div className="card-footer text-muted">
       {footer}

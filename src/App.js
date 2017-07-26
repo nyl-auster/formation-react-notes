@@ -1,24 +1,25 @@
 import React from 'react'
-import VoteCard from './VoteCard'
+import Home from './Home'
+import CharacterDetail from './CharacterDetail'
 import Header from './Header'
 import Section from './Section'
-import characters from './characters'
-import Row from './Row'
+import { Route, BrowserRouter } from 'react-router-dom'
+import Menu from './Menu'
 
 const App = () =>
   <div className="container">
     <Header>
       Winter is voting
     </Header>
-    <Section>
-      <Row>
-        {characters.map(character =>
-          <div key={character.id} className="col">
-            <VoteCard id={character.id} title={character.name} text={character.description} picture={character.picture} />
-          </div>
-        )}
-      </Row>
-    </Section>
+    <BrowserRouter>
+      <div>
+        <Menu />
+        <Section>
+          <Route exact path="/" component={Home} />
+          <Route path="/character/:id" component={CharacterDetail} />
+        </Section>
+      </div>
+    </BrowserRouter>
   </div>
 
 export default App
